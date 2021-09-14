@@ -22,10 +22,12 @@ const { handleProfile } = require('./controllers/profile');
 const { handleSignIn } = require('./controllers/signin');
 const { handleImage, handleApiCall } = require('./controllers/images');
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+
 const db = knex({
   client: 'pg',
   connection: {
-    host: process.env.DATABASE_URL,
+    connectionString: process.env.DATABASE_URL,
     ssl: true
   }
 });
