@@ -20,7 +20,7 @@ const app = express();
 const { handleSignUp } = require('./controllers/signup');
 const { handleProfile } = require('./controllers/profile');
 const { handleSignIn } = require('./controllers/signin');
-const { handleImage } = require('./controllers/images');
+const { handleImage, handleApiCall } = require('./controllers/images');
 
 const db = knex({
   client: 'pg',
@@ -44,6 +44,12 @@ app.get('/profile/:id', (req, res) => handleProfile(req, res, db));
 
 app.put('/image', (req, res) => handleImage(req, res, db));
 
-app.listen(3000, () => {
-  console.log('app is running');
+app.post('/imageurl', (req, res) => handleApiCall(req, res));
+
+const PORT = process.env.PORT;
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
 });
+
+console.log();
