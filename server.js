@@ -33,12 +33,6 @@ const db = knex({
   }
 });
 
-db.select('*')
-  .from('users')
-  .then((data) => {
-    console.log(data);
-  });
-
 app.use(express.json());
 app.use(cors());
 
