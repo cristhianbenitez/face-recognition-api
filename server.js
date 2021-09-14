@@ -25,11 +25,8 @@ const { handleImage, handleApiCall } = require('./controllers/images');
 const db = knex({
   client: 'pg',
   connection: {
-    host: 'postgresql-curved-07764',
-    port: 5432,
-    user: 'postgres',
-    password: '123',
-    database: 'facerecognitiondb'
+    host: process.env.DATABASE_URL,
+    ssl: true
   }
 });
 
